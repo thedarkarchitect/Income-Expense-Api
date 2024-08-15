@@ -12,10 +12,10 @@ import java.util.Optional;
 
 @Repository
 public interface IncomeRepository extends JpaRepository<Income, Long> {
-    List<Income> findByDateBetween(LocalDate startDate, LocalDate endDate); //will return all incomes between two dates
+    List<Income> findByIncomeDateBetween(LocalDate startDate, LocalDate endDate); //will return all incomes between two dates
 
     @Query("SELECT SUM(i.amount) FROM Income i")
     Double sumAllAmounts();
 
-    Optional<Income> findFirstByOrderByDateDesc();
+    Optional<Income> findFirstByOrderByIncomeDateDesc();
 }

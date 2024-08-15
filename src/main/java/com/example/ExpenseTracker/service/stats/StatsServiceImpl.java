@@ -24,14 +24,14 @@ public class StatsServiceImpl implements StatsService{
     private final ExpenseRepository expenseRepository;
 
     @Override
-    public GraphDto getChartDate() {
+    public GraphDto getChartData() {
         LocalDate endDate = LocalDate.now(); //we get the current date
         LocalDate startDate = endDate.minusDays(27); //we get the date 28 days ago
 
         GraphDto graphDto = new GraphDto();
 
-        graphDto.setExpenseList(expenseRepository.findByDateBetween(startDate, endDate));
-        graphDto.setIncomeList(incomeRepository.findByDateBetween(startDate, endDate));
+        graphDto.setExpenseList(expenseRepository.findByExpenseDateBetween(startDate, endDate));
+        graphDto.setIncomeList(incomeRepository.findByIncomeDateBetween(startDate, endDate));
 
         return graphDto;
     }
@@ -40,8 +40,8 @@ public class StatsServiceImpl implements StatsService{
         Double totalIncome = incomeRepository.sumAllAmounts(); //we get the total income
         Double totalExpense = expenseRepository.sumAllAmounts(); // we get the total expense
 
-        Optional<Income> optionalIncome = incomeRepository.findFirstByOrderByDateDesc();  //we get the latest income
-        Optional<Expense> optionalExpense = expenseRepository.findFirstByOrderByDateDesc(); //we get the latest expense
+        Optional<Income> optionalIncome = incomeRepository.findFirstByOrderByIncomeDateDesc();  //we get the latest income
+        Optional<Expense> optionalExpense = expenseRepository.findFirstByOrderByExpenseDateDesc(); //we get the latest expense
 
         StatsDto statsDto = new StatsDto(); //we create a new StatsDto object
 
