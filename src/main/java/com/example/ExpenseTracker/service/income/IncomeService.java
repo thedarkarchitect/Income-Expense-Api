@@ -10,9 +10,9 @@ public interface IncomeService {
 
     List<IncomeDto> getAllIncomes(); //will return all incomes
 
-//    Income getIncomeById(Long id); //will return an income by id
-//
-//    Income updateIncome(Long id, IncomeDto incomeDto); //will update an income by id
-//
-//    void deleteIncome(Long id); //will delete an income by id
+    Income getIncomeById(Long id); //will return an income by id
+
+    Income updateIncome(Long id, IncomeDto incomeDto); //will update an income by id
+
+    void deleteIncome(Long id); //will delete an income by id
 }

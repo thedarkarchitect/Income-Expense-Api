@@ -34,7 +34,7 @@ public class Income {
         incomeDto.setDescription(this.description);
         incomeDto.setCategory(this.category);
         incomeDto.setAmount(this.amount);
-        incomeDto.setIncomeDate(this.incomeDate.toString());
+        incomeDto.setIncomeDate(this.incomeDate);
 
         return incomeDto;
     }
